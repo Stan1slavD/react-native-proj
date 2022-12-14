@@ -6,10 +6,18 @@ import AboutScreen from "./screens/about";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Entypo from "react-native-vector-icons/Entypo";
 import List from "./screens/list";
-
+import mongoose from 'mongoose';
+import { connect } from 'mongoose';
 const Tab = createBottomTabNavigator();
+const start = async ()=>{
+  
+    mongoose.connect('mongodb+srv://Stan1slavD:S3618Mb49@cluster0.edsdnyb.mongodb.net/?retryWrites=true&w=majority')
+    .then(() => console.log('Connected!'));
 
+}
 export default function App() {
+start()
+console.log(11)
   return (
     <NavigationContainer>
       <Tab.Navigator

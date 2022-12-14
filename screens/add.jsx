@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -8,10 +8,33 @@ import {
   Pressable,
 } from "react-native";
 import Span from "../components/text";
-function AddScreen() {
-  const [isSwitchOn, setIsSwitchOn] = React.useState(false);
 
-  const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+function AddScreen() {
+
+  const [isSwitchOn, setIsSwitchOn] = React.useState(false);
+  const [footage, setFootage] = useState();
+  const [rooms, setRooms] = useState();
+  const [area, setArea] = useState();
+  const [street, setStreet] = useState();
+  const [house, setHouse] = useState();
+  const [floor, setFloor] = useState();
+  const [houseType, setHouseType] = useState();
+  const [floorsNumber, setFloorsNumber] = useState();
+  const [price, setPrice] = useState();
+
+  const onToggleSwitch = () => {
+    setIsSwitchOn(!isSwitchOn);
+    setFootage();
+    setRooms();
+    setArea();
+    setStreet();
+    setHouse();
+    setHouseType();
+    setFloor();
+    setFloorsNumber();
+    setPrice();
+  };
+
   const styles = StyleSheet.create({
     tiStyle: {
       height: 40,
@@ -59,19 +82,55 @@ function AddScreen() {
           />
           <Span fs="20">Квартира</Span>
         </View>
-        <TextInput placeholder="Метраж" style={styles.tiStyle}></TextInput>
         <TextInput
-          placeholder="Кол-во комнат"
+          placeholder="Метраж"
+          onChangeText={(value) => setFootage(value)}
           style={styles.tiStyle}
         ></TextInput>
-        <TextInput placeholder="Район" style={styles.tiStyle}></TextInput>
-        <TextInput placeholder="Улица" style={styles.tiStyle}></TextInput>
-        <TextInput placeholder="Дом" style={styles.tiStyle}></TextInput>
-        <TextInput placeholder="Этаж" style={styles.tiStyle}></TextInput>
-        <TextInput placeholder="Вид дома" style={styles.tiStyle}></TextInput>
-        <TextInput placeholder="Кол-во этажей" style={styles.tiStyle}></TextInput>
-        <TextInput placeholder="Стоимость" style={styles.tiStyle}></TextInput>
-        <Pressable style={styles.button} onPress={() => console.log(1)}>
+        <TextInput
+          placeholder="Кол-во комнат"
+          onChangeText={(value) => setRooms(value)}
+          style={styles.tiStyle}
+        ></TextInput>
+        <TextInput
+          placeholder="Район"
+          onChangeText={(value) => setArea(value)}
+          style={styles.tiStyle}
+        ></TextInput>
+        <TextInput
+          placeholder="Улица"
+          onChangeText={(value) => setStreet(value)}
+          style={styles.tiStyle}
+        ></TextInput>
+        <TextInput
+          placeholder="Дом"
+          onChangeText={(value) => setHouse(value)}
+          style={styles.tiStyle}
+        ></TextInput>
+        <TextInput
+          placeholder="Этаж"
+          onChangeText={(value) => setFloor(value)}
+          style={styles.tiStyle}
+        ></TextInput>
+        <TextInput
+          placeholder="Вид дома"
+          onChangeText={(value) => setHouseType(value)}
+          style={styles.tiStyle}
+        ></TextInput>
+        <TextInput
+          placeholder="Кол-во этажей"
+          onChangeText={(value) => setFloorsNumber(value)}
+          style={styles.tiStyle}
+        ></TextInput>
+        <TextInput
+          placeholder="Стоимость"
+          onChangeText={(value) => setPrice(value)}
+          style={styles.tiStyle}
+        ></TextInput>
+        <Pressable
+          style={styles.button}
+          onPress={() => console.log(footage, rooms, area, house, price)}
+        >
           <Text style={styles.text}>Разместить квартиру</Text>
         </Pressable>
       </View>
@@ -99,11 +158,24 @@ function AddScreen() {
 
         <TextInput
           placeholder="Кол-во комнат"
+          onChangeText={(value) => setRooms(value)}
           style={styles.tiStyle}
         ></TextInput>
-        <TextInput placeholder="Район" style={styles.tiStyle}></TextInput>
-        <TextInput placeholder="Дом" style={styles.tiStyle}></TextInput>
-        <TextInput placeholder="Вид дома" style={styles.tiStyle}></TextInput>
+        <TextInput
+          placeholder="Район"
+          onChangeText={(value) => setArea(value)}
+          style={styles.tiStyle}
+        ></TextInput>
+        <TextInput
+          placeholder="Дом"
+          onChangeText={(value) => setHouse(value)}
+          style={styles.tiStyle}
+        ></TextInput>
+        <TextInput
+          placeholder="Вид дома"
+          onChangeText={(value) => setHouseType(value)}
+          style={styles.tiStyle}
+        ></TextInput>
         <Pressable style={styles.button} onPress={() => console.log(1)}>
           <Text style={styles.text}>Разместить заявку</Text>
         </Pressable>
@@ -113,6 +185,4 @@ function AddScreen() {
 }
 
 export default AddScreen;
-// метраж, количество комнат, адрес
-// (район, улицу, дом), этаж, вид дома (панельный, кирпичный) и количество
-// этажей, стоимость
+
