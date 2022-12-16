@@ -9,7 +9,29 @@ import {
 } from "react-native";
 import Span from "../components/text";
 
+import {collection, getDocs, addDoc} from "firebase/firestore"
+import { db } from "../db/config";
+import { async } from "@firebase/util";
+
+
+
 function AddScreen() {
+
+  const flatCollectionRef=collection(db,"flats");
+  const requestCollectionRef=collection(db,"requests");
+
+  const create =async ()=>{
+    await addDoc(userCollectionRef,{id:"12",name:"2122"})
+  }
+
+  const createFlat=async ()=>{
+    await addDoc(flatCollectionRef,{footage,rooms,area,street,house,floor,houseType,floorsNumber,price})
+  }
+
+  const createRequest=async ()=>{
+    await addDoc(requestCollectionRef,{rooms,area,house,houseType})
+  }
+
 
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
   const [footage, setFootage] = useState();
@@ -129,7 +151,7 @@ function AddScreen() {
         ></TextInput>
         <Pressable
           style={styles.button}
-          onPress={() => console.log(footage, rooms, area, house, price)}
+          onPress={()=>{createFlat()}}
         >
           <Text style={styles.text}>Разместить квартиру</Text>
         </Pressable>
@@ -176,7 +198,7 @@ function AddScreen() {
           onChangeText={(value) => setHouseType(value)}
           style={styles.tiStyle}
         ></TextInput>
-        <Pressable style={styles.button} onPress={() => console.log(1)}>
+        <Pressable style={styles.button} onPress={() => createRequest()}>
           <Text style={styles.text}>Разместить заявку</Text>
         </Pressable>
       </View>

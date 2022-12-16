@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^0.17.2",
+    "@react-native-firebase/app": "^16.4.6",
     "@react-navigation/bottom-tabs": "^6.4.0",
     "@react-navigation/native": "^6.0.13",
     "expo": "~47.0.3",
     "expo-status-bar": "~1.4.2",
+    "firebase": "^9.15.0",
     "mongoose": "^6.8.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
