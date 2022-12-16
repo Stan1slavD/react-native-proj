@@ -11,7 +11,6 @@ import Span from "../components/text";
 
 import {collection, getDocs, addDoc} from "firebase/firestore"
 import { db } from "../db/config";
-import { async } from "@firebase/util";
 
 
 
