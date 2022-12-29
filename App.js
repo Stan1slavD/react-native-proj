@@ -1,15 +1,20 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from '@react-navigation/native-stack';
 import SearchScreen from "./screens/search";
 import AddScreen from "./screens/add";
 import AboutScreen from "./screens/about";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Entypo from "react-native-vector-icons/Entypo";
 import List from "./screens/list";
+import Test from "./screens/start";
 const Tab = createBottomTabNavigator();
+import CardStack from "./nav/cardInfoStack";
+
 export default function App() {
   return (
     <NavigationContainer>
+      
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarShowLabel: false,
@@ -32,11 +37,13 @@ export default function App() {
           tabBarActiveTintColor: "black",
         })}
       >
-        <Tab.Screen name="Поиск" component={SearchScreen} />
+        <Tab.Screen name="Поиск" component={CardStack} />
         <Tab.Screen name="Добавить заявку/квартиру" component={AddScreen} />
         <Tab.Screen name="Лист" component={List} options={{ tabBarBadge: 3 }} />
         <Tab.Screen name="Информация" component={AboutScreen} />
       </Tab.Navigator>
+{/* 
+      //SearchScreen */}
     </NavigationContainer>
   );
 }

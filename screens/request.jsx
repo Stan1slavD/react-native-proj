@@ -1,10 +1,10 @@
 import React from "react";
-import Span from "./text";
-import Div from "./view";
+import Span from "../components/text";
+import Div from "../components/view";
 import { Image, View } from "react-native";
 
-function Card(item) {
-  //console.log(item)
+function ReqCard(item) {
+  console.log(item)
   return (
     <View
       style={{
@@ -23,19 +23,11 @@ function Card(item) {
       <View style={{ alignSelf: "flex-start" }}>
         <Span fs="20px">{item.data.rooms}</Span>
         <Span fs="10px">район {item.data.area} </Span>
-        <Span fs="10px">ул. {item.data.street} </Span>
         <Span fs="10px">д. {item.data.house}</Span>
-      </View>
-      <View style={{ alignSelf: "center" }}>
-        <Span color="green" fs="20px">
-          {item.data.price} млн руб.
-        </Span>
+        <Span fs="10px">Тип дома {item.data.houseType} </Span>
       </View>
     </View>
   );
 }
 
-export default Card;
-// метраж, количество комнат, адрес
-// (район, улицу, дом), этаж, вид дома (панельный, кирпичный) и количество
-// этажей, стоимость
+export default ReqCard;
